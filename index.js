@@ -7,7 +7,7 @@ const server = http.createServer()
 server.on('request', function(request, response) {
   let language
   let software
-  let ipaddress = request.connection.remoteAddress
+  let ipaddress = request.headers['x-forwarded-for'] || request.connection.remoteAddress
 
   const acceptLanguage = request.headers['accept-language']
   if (acceptLanguage) {
