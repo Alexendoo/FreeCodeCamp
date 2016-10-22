@@ -1,0 +1,23 @@
+{
+  "name": "shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexendoo/freeCodeCamp.git"
+  },
+  "author": "Alex Macleod <alex@macleod.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alexendoo/freeCodeCamp/issues"
+  },
+  "homepage": "https://github.com/Alexendoo/freeCodeCamp#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pg": "^6.1.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "globalDependencies": {
+    "node": "registry:env/node#6.0.0+20161019193037"
+  },
+  "dependencies": {
+    "express": "registry:npm/express#4.14.0+20160925001530",
+    "pg": "registry:npm/pg#6.0.2+20160802225752"
+  }
+}
