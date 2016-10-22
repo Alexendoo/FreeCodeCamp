@@ -19,19 +19,21 @@ const pool = new pg.Pool({
 
 const RADIX = 36
 
-// Ignore for debugging
-app.get('/favicon.ico', function(request, response) {
-  response.sendStatus(200)
-})
-
 app.get('/:short', function(request, response) {
   const id = parseInt(request.params.short, RADIX)
 
+  if (!id) {
+    badRequest(response)
+    return
+  }
+
   pool.query(`SELECT url FROM urls WHERE id=$1;`, [id])
-    .then(result => {
+    .then(function(result) {
       response.redirect(result.rows[0].url)
     })
-    .catch(console.error.bind(console))
+    .catch(function(err) {
+      notFound(response)
+    })
 })
 
 app.get(/^\/new\/.+/, function(request, response) {
@@ -40,13 +42,12 @@ app.get(/^\/new\/.+/, function(request, response) {
   response.setHeader('Content-Type', 'application/json')
 
   if (!(newUrl.protocol && newUrl.host)) {
-    response.status(400)
-    response.end('{"error": "bad request"}')
+    badRequest(response)
     return
   }
 
   pool.query(`INSERT INTO urls (url) VALUES ($1) RETURNING id;`, [newUrl.href])
-    .then(result => {
+    .then(function(result) {
       const id = result.rows[0].id
       response.end(JSON.stringify({
         original_url: newUrl.href,
@@ -64,3 +65,13 @@ pool
   .then(function() {
     app.listen(process.env.PORT || 8080)
   })
+
+function notFound(response) {
+  response.status(404)
+  response.end('{"error": "not found"}')
+}
+
+function badRequest(response) {
+  response.status(400)
+  response.end('{"error": "bad request"}')
+}
