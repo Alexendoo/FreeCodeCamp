@@ -7,7 +7,7 @@ const server = http.createServer()
 server.on('request', function(request, response) {
   let language
   let software
-  let ipaddress = request.client.remoteAddress
+  let ipaddress = request.connection.remoteAddress
 
   const acceptLanguage = request.headers['accept-language']
   if (acceptLanguage) {
