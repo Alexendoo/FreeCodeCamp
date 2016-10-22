@@ -18,6 +18,7 @@ const pool = new pg.Pool({
 })
 
 const RADIX = 36
+const SITE_URL = process.env.ADDRESS || "http://localhost"
 
 app.get('/:short', function(request, response) {
   const id = parseInt(request.params.short, RADIX)
@@ -48,10 +49,11 @@ app.get(/^\/new\/.+/, function(request, response) {
 
   pool.query(`INSERT INTO urls (url) VALUES ($1) RETURNING id;`, [newUrl.href])
     .then(function(result) {
-      const id = result.rows[0].id
+      const id = result.rows[0].id.toString(RADIX)
+
       response.end(JSON.stringify({
         original_url: newUrl.href,
-        short_url: id.toString(RADIX)
+        short_url: `${SITE_URL}/${id}`
       }))
     })
     .catch(console.error.bind(console))
