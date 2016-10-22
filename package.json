@@ -1,0 +1,19 @@
+{
+  "name": "headers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexendoo/freeCodeCamp.git"
+  },
+  "author": "Alex Macleod <alex@macleod.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alexendoo/freeCodeCamp/issues"
+  },
+  "homepage": "https://github.com/Alexendoo/freeCodeCamp#readme"
+}
