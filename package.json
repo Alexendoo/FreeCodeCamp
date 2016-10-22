@@ -1,5 +1,23 @@
 {
+  "name": "timestamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "dependencies": {
     "moment": "^2.15.1"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexendoo/timestamp.git"
+  },
+  "author": "Alex Macleod <alex@macleod.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alexendoo/timestamp/issues"
+  },
+  "homepage": "https://github.com/Alexendoo/timestamp#readme"
 }
